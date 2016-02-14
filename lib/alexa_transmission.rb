@@ -1,5 +1,9 @@
 Bundler.require
 require "alexa_transmission/version"
+require 'transmission_api'
+require 'sinatra/base'
+require 'to_name'
+require 'active_support/core_ext/array'
 
 module Sinatra
   module Transmission
@@ -14,7 +18,7 @@ module Sinatra
           response.without_card.to_json
           puts @echo_request.slots
         elsif @echo_request.intent_name == "CheckTransmission"
-          transmission_api_client = TransmissionApi::Client.new(
+          transmission_api_client = ::TransmissionApi::Client.new(
                                     :username => settings.config.transmission.username,
                                     :password => settings.config.transmission.password,
                                     :url      => settings.config.transmission.rpc_url
