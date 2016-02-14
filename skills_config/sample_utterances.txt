@@ -1,2 +1,3 @@
 CheckTransmission my downloads
 CheckTransmission check the status of my downloads
+CheckTransmission check my downloads
