@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'toname'
   spec.add_runtime_dependency 'transmission_api'
   spec.add_runtime_dependency 'activesupport'
-  spec.add_runtime_dependency 'sinatra'
+  spec.add_runtime_dependency 'sinatra-contrib'
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
