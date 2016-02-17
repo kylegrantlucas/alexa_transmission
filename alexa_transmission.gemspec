@@ -5,7 +5,7 @@ require 'alexa_transmission/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "alexa_transmission"
-  spec.version       = AlexaTransmission::VERSION
+  spec.version       = Transmission::VERSION
   spec.authors       = ["kylegrantlucas"]
   spec.email         = ["kglucas93@gmail.com"]
 

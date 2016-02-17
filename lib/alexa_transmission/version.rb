@@ -1,3 +1,3 @@
-module AlexaTransmission
-  VERSION = "1.1.0"
+module Transmission
+  VERSION = "1.1.1"
 end
