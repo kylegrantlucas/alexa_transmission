@@ -15,7 +15,21 @@ module Transmission
                                   :url      => settings.config.transmission.rpc_url
                                 )
 
-      parsed_files = transmission_api_client.all.map{|x| {percent_completed: x["percentDone"], name: ToName.to_name(x["name"].gsub(/\+/, '.').gsub(' ', '.'))} if x["percentDone"] != 1}.compact
+      parsed_files = transmission_api_client.all.map do |x| 
+        size_in_gb = x["totalSize"].to_f/(1000**3)
+        rate_download_in_gb_sec = x["rateDownload"].to_f/(1000**3)
+
+        hash = {
+          percent_completed: x["percentDone"], 
+          name: ToName.to_name(x["name"].gsub(/\+/, '.').gsub(' ', '.')),
+          eta: (size_in_gb-(size_in_gb*x["percentDone"]))/rate_download_in_gb_sec/(60**2)
+        } 
+
+        hash if x["isFinished"] != true
+      end 
+
+      parsed_files.compact!
+      
       parsed_strings = parsed_files.map {|x| "#{x[:name].name}#{" Episode #{x[:name].episode}" if x[:name].episode} is at #{(x[:percent_completed]*100).round} percent" }.to_sentence
       AlexaObjects::Response.new(spoken_response: parsed_strings).to_json            
     end
