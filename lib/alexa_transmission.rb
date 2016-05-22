@@ -25,9 +25,9 @@ module Transmission
           eta: (size_in_gb-(size_in_gb*x["percentDone"]))/rate_download_in_gb_sec/(60**2)
         } 
 
-        hash if x["isFinished"] != true
+        hash if x["isFinished"] != true && x["rateDownload"] > 0
       end 
-
+      puts parsed_files
       parsed_files.compact!
       
       parsed_strings = if parsed_files && !parsed_files.empty?
