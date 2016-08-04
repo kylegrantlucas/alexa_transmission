@@ -1,4 +1,9 @@
 # Alexa Transmission
+[![Gem Version](https://badge.fury.io/rb/alexa_transmission.svg)](http://badge.fury.io/rb/alexa_transmission)
+[![Code Climate](https://codeclimate.com/github/kylegrantlucas/alexa_transmission/badges/gpa.svg)](https://codeclimate.com/github/kylegrantlucas/alexa_transmission) 
+
+A sinatra middleware for using alexa commands with transmission. 💾
+
 ## Installation
 
 Add this line to your SingingAssistant installation's Gemfile:
